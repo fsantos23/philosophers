@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   actions.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:28:45 by fsantos2          #+#    #+#             */
-/*   Updated: 2023/12/01 14:57:22 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/02 17:34:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ int	check_fork(t_philo *philo)
 	{
 		if (!grab_forks(philo, philo->l_fork, philo->r_fork))
 			return (1);
-		write_actions(philo, "as taken a fork");
-		write_actions(philo, "as taken a fork");
+		write_actions(philo, "has taken a fork");
+		write_actions(philo, "has taken a fork");
 	}
 	else
 	{
 		if (!grab_forks(philo, philo->r_fork, philo->l_fork))
 			return (1);
-		write_actions(philo, "as taken a fork");
-		write_actions(philo, "as taken a fork");
+		write_actions(philo, "has taken a fork");
+		write_actions(philo, "has taken a fork");
 	}
 	if (!check_death(philo))
 	{
