@@ -4,7 +4,8 @@ SRCS		=	$(SRCS_DIR)/main.c \
 				$(SRCS_DIR)/utils.c	\
 				$(SRCS_DIR)/utils_2.c \
 				$(SRCS_DIR)/actions.c \
-				$(SRCS_DIR)/actions_2.c
+				$(SRCS_DIR)/actions_2.c \
+				$(SRCS_DIR)/death.c \
 
 OBJS		=	$(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
 
@@ -14,7 +15,7 @@ NAME		=	philo
 
 CC			=	cc
 
-CFLAGS		=	-Wall -Wextra -Werror -g -pthread -fsanitize=thread 
+CFLAGS		=	-Wall -Wextra -Werror -g -pthread -fsanitize=thread
 
 RM			=	rm -rf
 
