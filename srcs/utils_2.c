@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 12:38:42 by fsantos2          #+#    #+#             */
-/*   Updated: 2023/12/01 14:57:40 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/03 17:40:02 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,10 @@ void	*start_philos(void *philo)
 void	one_philo(t_philo *philo)
 {
 	printf("0 1 has taken a fork\n");
-	ft_usleep(philo->info.die, philo);
-	printf("%lu 1 died\n", philo->info.die);
+	pthread_mutex_lock(&philo->mutex);
+	usleep(philo->die);
+	printf("%lu 1 died\n", philo->die);
+	pthread_mutex_unlock(&philo->mutex);
 }
 
 int	ft_usleep(__uint64_t time, t_philo *philo)

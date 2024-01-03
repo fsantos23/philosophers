@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 14:14:13 by fsantos2          #+#    #+#             */
-/*   Updated: 2023/12/02 18:53:07 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/03 18:42:43 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,14 @@ int	check_death(t_philo *philo)
 	pthread_mutex_lock(&philo->mutex);
 	if (philo->dead.died == 1)
 	{
-		pthread_mutex_unlock(&philo->mutex);
 		if (philo->dead.flag == 1)
 		{
 			philo->dead.flag = 0;
+			pthread_mutex_unlock(&philo->mutex);
 			write_actions(philo, "died");
 		}
+		else
+			pthread_mutex_unlock(&philo->mutex);
 		return (0);
 	}
 	pthread_mutex_unlock(&philo->mutex);

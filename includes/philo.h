@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:52:21 by fsantos2          #+#    #+#             */
-/*   Updated: 2023/12/01 14:56:57 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/03 17:44:52 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_info
 	int				philos;
 	int				fork;
 	__uint64_t		die;
-	int				eat;
-	int				sleep;
+	__uint64_t		eat;
+	__uint64_t		sleep;
 	int				must_eat;
 	__uint64_t		begin_tmp;
 	t_fork			*forks;
@@ -53,6 +53,7 @@ typedef struct s_philo
 {
 	int				cur_philo;
 	int				have_ate;
+	__uint64_t		die;
 
 	pthread_t		thread;
 	pthread_mutex_t	mutex;

@@ -6,11 +6,48 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:35 by fsantos2          #+#    #+#             */
-/*   Updated: 2023/12/02 18:17:41 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/03 18:50:29 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+
+void bs(t_philo *philo, t_info info, int *i)
+{
+	while ((*i) < info.philos)
+	{
+		pthread_mutex_lock(&philo[*i].mutex);
+		philo[*i].dead.died = 1;
+		pthread_mutex_unlock(&philo[*i].mutex);
+		(*i)++;
+	}
+}
+
+int death_check(t_philo *philo, t_info info, int *i, __uint64_t cur_time)
+{
+	pthread_mutex_lock(&philo[*i].mutex);
+		if (cur_time >= philo[*i].die)
+		{
+			philo[*i].dead.flag = 1;
+			pthread_mutex_unlock(&philo[*i].mutex);
+			(*i) = 0;
+			bs(philo, info, i);
+			return (0);
+		}
+		else if (philo[*i].info.must_eat != 0)
+		{
+			if (philo[*i].have_ate == philo[*i].info.must_eat)
+			{
+				pthread_mutex_unlock(&philo[*i].mutex);
+				printf("-------------------------------------HERE\n");
+				return (0);
+			}
+			pthread_mutex_unlock(&philo[*i].mutex);
+		}
+		else
+			pthread_mutex_unlock(&philo[*i].mutex);
+	return 1;
+}
 
 int	general_death(t_philo *philo, t_info info, __uint64_t time)
 {
@@ -21,22 +58,8 @@ int	general_death(t_philo *philo, t_info info, __uint64_t time)
 	while (i++ < info.philos - 1)
 	{
 		cur_time = get_time() - time;
-		if (cur_time >= philo[i].info.die)
-		{
-			philo[i].dead.flag = 1;
-			i = 0;
-			while (i < info.philos)
-			{
-				philo[i].dead.died = 1;
-				i++;
-			}
+		if(!death_check(philo, info, &i, cur_time))
 			return (0);
-		}
-		else if (philo[i].info.must_eat != 0)
-		{
-			if (philo[i].have_ate == philo[i].info.must_eat)
-				return (0);
-		}
 	}
 	return (1);
 }
@@ -105,6 +128,7 @@ void	create_list(t_info info)
 		philo[i].l_fork = &info.forks[i];
 		philo[i].r_fork = &info.forks[(i + 1) % philo->info.philos];
 		philo[i].have_ate = 0;
+		philo[i].die = info.die;
 		philo[i].dead.died = 0;
 		philo[i].dead.flag = 0;
 		pthread_mutex_init(&philo[i].mutex, NULL);
