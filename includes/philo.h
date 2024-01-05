@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:52:21 by fsantos2          #+#    #+#             */
-/*   Updated: 2024/01/03 23:15:59 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:14:00 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int					check_args(char **argv);
 int					must_eat(t_philo *philo);
 int					grab_fork(t_fork *fork);
 int					grab_forks(t_philo *philo, t_fork *left, t_fork *right);
-int 				death_check(t_philo *philo, t_info info, int *i, __uint64_t cur_time);
+int					death_check(t_philo *philo, t_info info, int *i, \
+__uint64_t cur_time);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:54:35 by fsantos2          #+#    #+#             */
-/*   Updated: 2024/01/03 23:14:32 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:23:26 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	general_death(t_philo *philo, t_info info, __uint64_t time)
 	while (i++ < info.philos - 1)
 	{
 		cur_time = get_time() - time;
-		if(!death_check(philo, info, &i, cur_time))
+		if (!death_check (philo, info, &i, cur_time))
 			return (0);
 	}
 	return (1);

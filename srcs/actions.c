@@ -6,7 +6,7 @@
 /*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 17:28:45 by fsantos2          #+#    #+#             */
-/*   Updated: 2024/01/03 18:52:51 by fsantos2         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:15:59 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	actions(t_philo *philo)
 				break ;
 			if (!must_eat(philo))
 				break ;
-			if (ft_sleep(philo, time) == 1)	
+			if (ft_sleep(philo, time) == 1)
 				break ;
 			if (think(philo) == 1)
 				break ;

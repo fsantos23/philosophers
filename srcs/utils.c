@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: fsantos2 <fsantos2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:12:13 by fsantos2          #+#    #+#             */
-/*   Updated: 2024/01/03 15:12:07 by marvin           ###   ########.fr       */
+/*   Updated: 2024/01/05 13:16:44 by fsantos2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	check_args(char **argv)
 	int		a;
 
 	a = 1;
-	if(ft_atoi(argv[1]) == 0)
+	if (ft_atoi(argv[1]) == 0)
 		return (0);
 	while (argv[a])
 	{
