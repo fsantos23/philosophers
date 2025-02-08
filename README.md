@@ -18,19 +18,6 @@ Implementation of the dining philosophers problem using threads and mutexes.
 
 ## 🛠️ Implementation
 
-### Data Structures
-```c
-typedef struct s_philosopher
-{
-    int             id;
-    int             meals_eaten;
-    uint64_t        last_meal;
-    pthread_mutex_t *left_fork;
-    pthread_mutex_t *right_fork;
-    struct s_data   *data;
-}   t_philosopher;
-```
-
 ### Key Functions
 - Thread creation
 - Mutex handling
@@ -49,7 +36,7 @@ typedef struct s_philosopher
 ## 🚀 Installation
 
 ```bash
-git clone https://github.com/[your-username]/philosophers.git
+git clone https://github.com/fsantos23/philosophers.git
 cd philosophers
 make
 ```
